@@ -2,9 +2,11 @@ package com.thoughtworks.guessnumber;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class GameStatus {
 
   private List<GameRecord> gameRecordList = new ArrayList<>();

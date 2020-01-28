@@ -1,10 +1,36 @@
 package com.thoughtworks.guessnumber;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class GuessNumber {
 
+  private final GameStatus gameStatus;
+
   public String guess(List<Integer> input, List<Integer> answer) {
+    //validate
+    String outPut = validate(input);
+    if (outPut == null) {
+      //judge
+       outPut = judge(input, answer);
+
+      //record
+      gameStatus.addRecord(input, outPut);
+    }
+    return outPut;
+  }
+
+  private String validate(List<Integer> input) {
+    //length
+    if (input.size() != 4) {
+      return "Wrong Input, input again";
+    }
+    return null;
+    //only number
+  }
+
+  private String judge(List<Integer> input, List<Integer> answer) {
     int positionRight = 0;
     int valueRight = 0;
     for (int i = 0; i < input.size(); i++) {

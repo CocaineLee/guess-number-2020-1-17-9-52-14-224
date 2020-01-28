@@ -3,7 +3,12 @@ package com.thoughtworks.guessnumber
 import spock.lang.Specification
 
 class GuessNumberTest extends Specification {
-  def guessNumber = new GuessNumber()
+  GuessNumber guessNumber
+  GameStatus gameStatus = Mock()
+
+  def setup() {
+    guessNumber = new GuessNumber(gameStatus)
+  }
 
   def 'it can return all wrong'() {
     given:
@@ -28,4 +33,18 @@ class GuessNumberTest extends Specification {
     then:
       result == "1A0B"
   }
+
+  def 'it can return wrong Input, input again when input length is not 4'() {
+    given:
+      def inputList = [1, 1, 6, 7, 8]
+      def answerList = [1, 2, 3, 4]
+
+    when:
+      def result = guessNumber.guess(inputList, answerList)
+
+    then:
+      result == "Wrong Input, input again"
+  }
+
 }
+
