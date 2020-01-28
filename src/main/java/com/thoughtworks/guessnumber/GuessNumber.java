@@ -1,11 +1,13 @@
 package com.thoughtworks.guessnumber;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class GuessNumber {
 
+  public static final int ANSWER_LENGTH = 4;
   private final GameStatus gameStatus;
 
   public String guess(List<Integer> input, List<Integer> answer) {
@@ -23,11 +25,13 @@ public class GuessNumber {
 
   private String validate(List<Integer> input) {
     //length
-    if (input.size() != 4) {
+    if (input.size() != ANSWER_LENGTH) {
+      return "Wrong Input, input again";
+    }
+    if (input.stream().distinct().collect(Collectors.toList()).size() < ANSWER_LENGTH) {
       return "Wrong Input, input again";
     }
     return null;
-    //only number
   }
 
   private String judge(List<Integer> input, List<Integer> answer) {
