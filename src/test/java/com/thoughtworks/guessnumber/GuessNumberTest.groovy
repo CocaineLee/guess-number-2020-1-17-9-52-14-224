@@ -58,5 +58,18 @@ class GuessNumberTest extends Specification {
       result == "Wrong Input, input again"
   }
 
+  def 'it can return 4A0B when input right '() {
+    given:
+      def inputList = [1, 2, 3, 4]
+      def answerList = [1, 2, 3, 4]
+
+    when:
+      def result = guessNumber.guess(inputList, answerList)
+
+    then:
+      result == "4A0B"
+
+  }
+
 }
 

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class GuessNumber {
 
   public static final int ANSWER_LENGTH = 4;
+  public static final String WRONG_INPUT_MESSAGE = "Wrong Input, input again";
   private final GameStatus gameStatus;
 
   public String guess(List<Integer> input, List<Integer> answer) {
@@ -15,7 +16,7 @@ public class GuessNumber {
     String outPut = validate(input);
     if (outPut == null) {
       //judge
-       outPut = judge(input, answer);
+      outPut = judge(input, answer);
 
       //record
       gameStatus.addRecord(input, outPut);
@@ -26,10 +27,10 @@ public class GuessNumber {
   private String validate(List<Integer> input) {
     //length
     if (input.size() != ANSWER_LENGTH) {
-      return "Wrong Input, input again";
+      return WRONG_INPUT_MESSAGE;
     }
     if (input.stream().distinct().collect(Collectors.toList()).size() < ANSWER_LENGTH) {
-      return "Wrong Input, input again";
+      return WRONG_INPUT_MESSAGE;
     }
     return null;
   }
