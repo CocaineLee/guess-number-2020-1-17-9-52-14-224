@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class InputGenerator {
+public class NumbersGenerator {
 
-  public List<Integer> generateInput() {
+  public static List<Integer> generate() {
     Random random = new Random();
     List<Integer> input = new ArrayList<>();
     for (int i = 0; i < 4; i++) {

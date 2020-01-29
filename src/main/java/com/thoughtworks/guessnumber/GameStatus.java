@@ -2,11 +2,11 @@ package com.thoughtworks.guessnumber;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@NoArgsConstructor
 public class GameStatus {
 
   private List<GameRecord> gameRecordList = new ArrayList<>();
@@ -16,7 +16,7 @@ public class GameStatus {
     if (outPut.startsWith("4")) {
       this.isWin = true;
     }
-    int times = gameRecordList.size()+1;
+    int times = gameRecordList.size() + 1;
     gameRecordList.add(new GameRecord(times, input, outPut));
   }
 
